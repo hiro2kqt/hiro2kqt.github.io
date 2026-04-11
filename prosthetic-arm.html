@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prosthetic Arm for Disabled People</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #ffffff;
+            color: #000000;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 60px 32px;
+        }
+
+        /* Typography */
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            letter-spacing: -0.02em;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-top: 48px;
+            margin-bottom: 16px;
+            letter-spacing: -0.01em;
+        }
+
+        h3 {
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        p {
+            margin-bottom: 12px;
+        }
+
+        a {
+            color: #000000;
+            text-decoration: underline;
+        }
+
+        a:hover {
+            text-decoration: none;
+        }
+
+        /* Header */
+        header {
+            border-bottom: 1px solid #000000;
+            padding-bottom: 24px;
+            margin-bottom: 48px;
+        }
+
+        .tagline {
+            font-size: 1.125rem;
+            margin-bottom: 16px;
+            font-weight: 400;
+        }
+
+        .header-links {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            font-size: 0.9rem;
+        }
+
+        .header-links a {
+            display: inline-block;
+        }
+
+        /* Sections */
+        section {
+            margin-bottom: 48px;
+        }
+
+        /* Overview Grid */
+        .overview-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+            margin-top: 16px;
+        }
+
+        /* Role List */
+        .role-list {
+            list-style: none;
+            margin-top: 16px;
+        }
+
+        .role-list li {
+            padding: 8px 0;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .role-list li:last-child {
+            border-bottom: none;
+        }
+
+        /* Tech Stack */
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+            margin-top: 16px;
+        }
+
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 8px;
+        }
+
+        .tag {
+            padding: 4px 0;
+            font-size: 0.9rem;
+        }
+
+        .tag::before {
+            content: '• ';
+        }
+
+        /* Results */
+        .results-list {
+            margin-top: 16px;
+        }
+
+        .result-item {
+            padding: 12px 0;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .result-item:last-child {
+            border-bottom: none;
+        }
+
+        .result-item h3 {
+            margin-bottom: 4px;
+        }
+
+        /* Gallery */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 16px;
+            margin-top: 16px;
+        }
+
+        .gallery-item {
+            overflow: hidden;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border: 1px solid #e0e0e0;
+        }
+
+        /* Timeline */
+        .timeline-toggle {
+            width: 100%;
+            padding: 12px 0;
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid #000000;
+            color: #000000;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 16px;
+            font-family: inherit;
+            text-align: left;
+        }
+
+        .timeline-toggle:hover {
+            opacity: 0.7;
+        }
+
+        .timeline-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+
+        .timeline-content.expanded {
+            max-height: 10000px;
+            transition: max-height 0.5s ease-in;
+        }
+
+        .timeline {
+            margin-top: 24px;
+        }
+
+        .timeline-item {
+            margin-bottom: 32px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .timeline-item:last-child {
+            border-bottom: none;
+        }
+
+        .timeline-date {
+            font-weight: 600;
+            font-size: 1rem;
+            margin-bottom: 8px;
+        }
+
+        .timeline-description {
+            margin-bottom: 12px;
+        }
+
+        .timeline-description ul {
+            margin-left: 20px;
+            margin-top: 8px;
+        }
+
+        .timeline-images {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 12px;
+            margin-top: 12px;
+        }
+
+        .timeline-images img {
+            width: 100%;
+            border: 1px solid #e0e0e0;
+        }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid #000000;
+            padding-top: 24px;
+            margin-top: 48px;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 8px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 40px 20px;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            h2 {
+                font-size: 1.25rem;
+                margin-top: 36px;
+            }
+
+            .overview-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+
+            .tech-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+                gap: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Prosthetic Arm for Disabled People</h1>
+            <p class="tagline">Low-Cost Robotic Prosthetic Arm Controlled by Foot Movements</p>
+            <div class="header-links">
+                <a href="https://www.youtube.com/watch?v=u1Fu3H1WxxA" target="_blank">Demo Video</a>
+                <span>|</span>
+                <a href="https://ieeexplore.ieee.org/document/8354966" target="_blank">IEEE Publication</a>
+                <span>|</span>
+                <a href="https://abstracts.societyforscience.org/Home/PrintPdf?projectId=9090" target="_blank">ISEF Abstract</a>
+                <span>|</span>
+                <a href="https://moet.gov.vn/tintuc/pages/chi-tiet.aspx?ItemID=4747" target="_blank">Ministry of Education</a>
+            </div>
+        </header>
+
+        <main>
+            <!-- Overview -->
+            <section id="overview">
+                <h2>Overview</h2>
+                <div class="overview-grid">
+                    <div>
+                        <h3>Problem</h3>
+                        <p>In Vietnam, many people with bilateral arm disabilities face limited access to affordable prosthetic solutions. Existing prosthetic arms are expensive (often thousands of dollars) and designed primarily for single-arm amputees, leaving those without both arms with few viable options.</p>
+                    </div>
+                    <div>
+                        <h3>Solution</h3>
+                        <p>A low-cost robotic prosthetic arm controlled by foot movements using sensors attached to the user's legs. Capable of 31 distinct motions including grasping, rotating, and extending, enabling basic daily tasks like eating and drinking at a production cost of only $150.</p>
+                    </div>
+                    <div>
+                        <h3>Impact</h3>
+                        <p>Successfully demonstrated with real users, won 3rd place at INTEL ISEF 2017 and 1st place at ViSEF 2017. Published in IEEE proceedings and featured by Vietnam's Ministry of Education, providing an accessible prosthetic solution for bilateral arm amputees.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- My Role -->
+            <section id="role">
+                <h2>My Role & Contributions</h2>
+                <ul class="role-list">
+                    <li>Conceived and developed the complete system from initial concept to working prototype over 2 years (2016-2018)</li>
+                    <li>Designed innovative control system using leg-mounted sensors (tilting sensors on foot and ankle) to enable 31 distinct arm movements</li>
+                    <li>Created all 3D models in Sketchup and coordinated 3D printing of prosthetic components</li>
+                    <li>Built custom 3D printer from scratch to enable rapid prototyping and iteration</li>
+                    <li>Programmed Arduino microcontroller in C to process sensor inputs and control servo motors</li>
+                    <li>Conducted real-world testing with disabled users to validate functionality and usability</li>
+                    <li>Upgraded system in 2018 with EMG (electromyography) sensors for muscle-based control and human-like skin</li>
+                    <li>Presented research at international competitions (INTEL ISEF, ViSEF) and published findings in IEEE proceedings</li>
+                </ul>
+            </section>
+
+            <!-- Tech Stack -->
+            <section id="tech-stack">
+                <h2>Tech Stack & Components</h2>
+                <div class="tech-grid">
+                    <div class="tech-category">
+                        <h3>Hardware</h3>
+                        <div class="tech-tags">
+                            <span class="tag">Arduino Microcontroller</span>
+                            <span class="tag">Servo Motors</span>
+                            <span class="tag">Tilting Sensors (Foot & Ankle)</span>
+                            <span class="tag">EMG Sensors (2018 Version)</span>
+                            <span class="tag">PQ12 Actuators</span>
+                            <span class="tag">3D Printed Components</span>
+                            <span class="tag">Custom 3D Printer</span>
+                        </div>
+                    </div>
+                    <div class="tech-category">
+                        <h3>Software & Tools</h3>
+                        <div class="tech-tags">
+                            <span class="tag">C Programming</span>
+                            <span class="tag">Arduino IDE</span>
+                            <span class="tag">Sketchup (3D Design)</span>
+                            <span class="tag">Signal Processing Algorithms</span>
+                        </div>
+                    </div>
+                    <div class="tech-category">
+                        <h3>Key Features</h3>
+                        <div class="tech-tags">
+                            <span class="tag">31 Distinct Motions</span>
+                            <span class="tag">3-Step Finger Movement</span>
+                            <span class="tag">Weight: 0.9kg (Half Normal Arm)</span>
+                            <span class="tag">Lifting Capacity: 2kg</span>
+                            <span class="tag">Movement Detection (Standing/Walking)</span>
+                        </div>
+                    </div>
+                    <div class="tech-category">
+                        <h3>Control Mechanism</h3>
+                        <div class="tech-tags">
+                            <span class="tag">Toe Sensors (Finger Control)</span>
+                            <span class="tag">Foot Tilt (Hand Rotation)</span>
+                            <span class="tag">Ankle Sensor (Activity Detection)</span>
+                            <span class="tag">EMG Muscle Control (2018)</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Results -->
+            <section id="results">
+                <h2>Results & Recognition</h2>
+                <div class="results-list">
+                    <div class="result-item">
+                        <h3>3rd Place at INTEL ISEF 2017</h3>
+                        <p>International Science & Engineering Fair — competed against top student researchers globally in robotics and intelligent machines category. Los Angeles, California, USA.</p>
+                    </div>
+                    <div class="result-item">
+                        <h3>3rd Place IEEE Presidents' Scholarship</h3>
+                        <p>Awarded by IEEE (Institute of Electrical and Electronics Engineers) at ISEF 2017 for outstanding engineering innovation and technical achievement.</p>
+                    </div>
+                    <div class="result-item">
+                        <h3>1st Place at ViSEF 2017</h3>
+                        <p>Vietnam Science & Engineering Fair — first place in Robotics and Intelligent Machines category and advanced to final round representing Vietnam.</p>
+                    </div>
+                    <div class="result-item">
+                        <h3>IEEE Publication</h3>
+                        <p>Research published in <a href="https://ieeexplore.ieee.org/document/8354966" target="_blank">IEEE proceedings</a> documenting the technical design and functionality of the prosthetic arm system.</p>
+                    </div>
+                    <div class="result-item">
+                        <h3>Real-World Testing</h3>
+                        <p>Successfully tested with disabled users performing daily tasks: holding spoons and bowls for eating, turning lids, pouring drinks. <a href="https://www.youtube.com/watch?v=u1Fu3H1WxxA" target="_blank">Video documentation</a> available.</p>
+                    </div>
+                    <div class="result-item">
+                        <h3>Cost Achievement</h3>
+                        <p>Total production cost of approximately $150 — making advanced prosthetic technology accessible to people with disabilities in developing countries where commercial options cost thousands of dollars.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Gallery -->
+            <section id="gallery">
+                <h2>Project Gallery</h2>
+                <div class="gallery">
+                    <div class="gallery-item">
+                        <img src="assets/prosthetic-arm/image.png" alt="Prosthetic Arm Overview">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="assets/prosthetic-arm/IMG_20170517_151007.jpg" alt="ISEF 2017 Presentation">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="assets/prosthetic-arm/image 12.png" alt="ISEF Award Ceremony">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="assets/prosthetic-arm/117841061_3183703804998920_544457940696355343_n.png" alt="ISEF Competition">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="assets/prosthetic-arm/image 19.png" alt="User Testing">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="assets/prosthetic-arm/image 2.png" alt="2018 Version with EMG">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="assets/prosthetic-arm/image 1.png" alt="TechDay 2018">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="assets/prosthetic-arm/image 5.png" alt="TechFest 2018">
+                    </div>
+                </div>
+            </section>
+
+            <!-- Development Journey -->
+            <section id="journey">
+                <h2>Development Journey</h2>
+                <button class="timeline-toggle" onclick="toggleTimeline()">
+                    <span>View Complete Development Timeline (June 2016 - December 2018)</span>
+                    <span id="toggle-icon">▼</span>
+                </button>
+                <div class="timeline-content" id="timeline-content">
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-date">June 2016</div>
+                            <div class="timeline-description">
+                                <strong>Initial Prototype:</strong> Created first handmade version using mica plastic to validate the core concept and control mechanism.
+                            </div>
+                            <div class="timeline-images">
+                                <img src="assets/prosthetic-arm/image 44.png" alt="Handmade mica version">
+                            </div>
+                        </div>
+
+                        <div class="timeline-item">
+                            <div class="timeline-date">August 2016</div>
+                            <div class="timeline-description">
+                                <strong>First 3D Design:</strong> Transitioned from handmade prototype to digital 3D model in Sketchup, enabling precise manufacturing and replication.
+                            </div>
+                            <div class="timeline-images">
+                                <img src="assets/prosthetic-arm/image 43.png" alt="First 3D design">
+                            </div>
+                        </div>
+
+                        <div class="timeline-item">
+                            <div class="timeline-date">September 2016</div>
+                            <div class="timeline-description">
+                                <strong>First Operational Version:</strong> Successfully assembled and tested first working prototype with motor control and basic movements.
+                            </div>
+                            <div class="timeline-images">
+                                <img src="assets/prosthetic-arm/image 40.png" alt="First operational 1">
+                                <img src="assets/prosthetic-arm/image 41.png" alt="First operational 2">
+                                <img src="assets/prosthetic-arm/image 42.png" alt="First operational 3">
+                            </div>
+                        </div>
+
+                        <div class="timeline-item">
+                            <div class="timeline-date">October 2016</div>
+                            <div class="timeline-description">
+                                <strong>Testing Phase:</strong> Extensive testing of movement patterns, sensor calibration, and control responsiveness.
+                            </div>
+                        </div>
+
+                        <div class="timeline-item">
+                            <div class="timeline-date">December 2016</div>
+                            <div class="timeline-description">
+                                <strong>Production & Assembly:</strong> Finalized 3D design and sent to 3D printing service. Assembled all printed parts with electronic components and tested new transmitter design for improved sensor communication.
+                            </div>
+                            <div class="timeline-images">
+                                <img src="assets/prosthetic-arm/image 25.png" alt="Assembly 1">
+                                <img src="assets/prosthetic-arm/image 26.png" alt="Assembly 2">
+                                <img src="assets/prosthetic-arm/image 27.png" alt="Assembly 3">
+                                <img src="assets/prosthetic-arm/image 33.png" alt="Final 3D design 1">
+                                <img src="assets/prosthetic-arm/image 34.png" alt="Final 3D design 2">
+                                <img src="assets/prosthetic-arm/image 38.png" alt="Transmitter test">
+                            </div>
+                        </div>
+
+                        <div class="timeline-item">
+                            <div class="timeline-date">January 2017</div>
+                            <div class="timeline-description">
+                                <strong>Real-World User Testing:</strong> Conducted first tests with actual disabled person, validating that the prosthetic could perform daily tasks (eating, drinking, object manipulation). Built custom 3D printer to accelerate iteration cycles.
+                            </div>
+                            <div class="timeline-images">
+                                <img src="assets/prosthetic-arm/image 19.png" alt="User testing">
+                                <img src="assets/prosthetic-arm/image 20.png" alt="User testing 2">
+                                <img src="assets/prosthetic-arm/image 21.png" alt="Custom 3D printer 1">
+                                <img src="assets/prosthetic-arm/image 22.png" alt="Custom 3D printer 2">
+                            </div>
+                        </div>
+
+                        <div class="timeline-item">
+                            <div class="timeline-date">March 2017</div>
+                            <div class="timeline-description">
+                                <strong>ViSEF 2017 Victory:</strong> Won 1st place at Vietnam Science & Engineering Fair in Robotics and Intelligent Machines category, advancing to final round and qualifying for international competition.
+                            </div>
+                            <div class="timeline-images">
+                                <img src="assets/prosthetic-arm/image 15.png" alt="ViSEF 1">
+                                <img src="assets/prosthetic-arm/image 16.png" alt="ViSEF 2">
+                                <img src="assets/prosthetic-arm/image 17.png" alt="ViSEF 3">
+                                <img src="assets/prosthetic-arm/image 18.png" alt="ViSEF 4">
+                            </div>
+                        </div>
+
+                        <div class="timeline-item">
+                            <div class="timeline-date">May 2017</div>
+                            <div class="timeline-description">
+                                <strong>INTEL ISEF 2017 International Recognition:</strong> Competed at INTEL International Science & Engineering Fair in Los Angeles, winning two prestigious awards: 3rd place in competition and 3rd place IEEE Presidents' Scholarship. Presented research to international judges and scientific community.
+                            </div>
+                            <div class="timeline-images">
+                                <img src="assets/prosthetic-arm/image 12.png" alt="ISEF award 1">
+                                <img src="assets/prosthetic-arm/image 13.png" alt="ISEF award 2">
+                                <img src="assets/prosthetic-arm/IMG_20170517_151007.jpg" alt="ISEF presentation">
+                                <img src="assets/prosthetic-arm/117841061_3183703804998920_544457940696355343_n.png" alt="ISEF booth">
+                                <img src="assets/prosthetic-arm/image 14.png" alt="ISEF display">
+                            </div>
+                        </div>
+
+                        <div class="timeline-item">
+                            <div class="timeline-date">November 2018</div>
+                            <div class="timeline-description">
+                                <strong>Next-Generation Development:</strong> Moved to new lab and began building advanced prototype with major upgrades: new mechanical design, EMG (electromyography) sensors for muscle-based control instead of foot sensors, and human-like silicone skin for improved aesthetics. Tested new signal processing algorithms.
+                            </div>
+                            <div class="timeline-images">
+                                <img src="assets/prosthetic-arm/image 2.png" alt="New lab 1">
+                                <img src="assets/prosthetic-arm/image 9.png" alt="New lab 2">
+                                <img src="assets/prosthetic-arm/image 10.png" alt="Human-like skin 1">
+                                <img src="assets/prosthetic-arm/image 11.png" alt="Human-like skin 2">
+                            </div>
+                        </div>
+
+                        <div class="timeline-item">
+                            <div class="timeline-date">November 2018</div>
+                            <div class="timeline-description">
+                                <strong>Public Showcases:</strong> Demonstrated upgraded prosthetic arm at TechDay 2018 and TechFest 2018, receiving significant public and industry interest.
+                            </div>
+                            <div class="timeline-images">
+                                <img src="assets/prosthetic-arm/image 1.png" alt="TechDay 1">
+                                <img src="assets/prosthetic-arm/image 6.png" alt="TechDay 2">
+                                <img src="assets/prosthetic-arm/image 7.png" alt="TechDay 3">
+                                <img src="assets/prosthetic-arm/image 5.png" alt="TechFest 2018">
+                            </div>
+                        </div>
+
+                        <div class="timeline-item">
+                            <div class="timeline-date">December 2018</div>
+                            <div class="timeline-description">
+                                <strong>Actuator Development:</strong> Created replica version of PQ12 linear actuator with longer stroke, enabling more natural and extended arm movements.
+                            </div>
+                            <div class="timeline-images">
+                                <img src="assets/prosthetic-arm/image 3.png" alt="Actuator 1">
+                                <img src="assets/prosthetic-arm/image 4.png" alt="Actuator 2">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>Prosthetic Arm Project — Pham Huy</p>
+            <a href="index.html" class="back-link">← Back to Portfolio</a>
+        </footer>
+    </div>
+
+    <script>
+        function toggleTimeline() {
+            const content = document.getElementById('timeline-content');
+            const icon = document.getElementById('toggle-icon');
+
+            if (content.classList.contains('expanded')) {
+                content.classList.remove('expanded');
+                icon.textContent = '▼';
+            } else {
+                content.classList.add('expanded');
+                icon.textContent = '▲';
+            }
+        }
+    </script>
+</body>
+</html>

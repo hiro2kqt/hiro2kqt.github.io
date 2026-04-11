@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BGlasses - AI Glasses for the Visually Impaired</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #ffffff;
+            color: #000000;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 60px 32px;
+        }
+
+        /* Typography */
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            letter-spacing: -0.02em;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-top: 48px;
+            margin-bottom: 16px;
+            letter-spacing: -0.01em;
+        }
+
+        h3 {
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        p {
+            margin-bottom: 12px;
+        }
+
+        a {
+            color: #000000;
+            text-decoration: underline;
+        }
+
+        a:hover {
+            text-decoration: none;
+        }
+
+        /* Header */
+        header {
+            border-bottom: 1px solid #000000;
+            padding-bottom: 24px;
+            margin-bottom: 48px;
+        }
+
+        .tagline {
+            font-size: 1.125rem;
+            margin-bottom: 16px;
+            font-weight: 400;
+        }
+
+        .header-links {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            font-size: 0.9rem;
+        }
+
+        .header-links a {
+            display: inline-block;
+        }
+
+        /* Sections */
+        section {
+            margin-bottom: 48px;
+        }
+
+        /* Overview Grid */
+        .overview-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+            margin-top: 16px;
+        }
+
+        /* Role List */
+        .role-list {
+            list-style: none;
+            margin-top: 16px;
+        }
+
+        .role-list li {
+            padding: 8px 0;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .role-list li:last-child {
+            border-bottom: none;
+        }
+
+        /* Tech Stack */
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+            margin-top: 16px;
+        }
+
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 8px;
+        }
+
+        .tag {
+            padding: 4px 0;
+            font-size: 0.9rem;
+        }
+
+        .tag::before {
+            content: '• ';
+        }
+
+        /* Results */
+        .results-list {
+            margin-top: 16px;
+        }
+
+        .result-item {
+            padding: 12px 0;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .result-item:last-child {
+            border-bottom: none;
+        }
+
+        .result-item h3 {
+            margin-bottom: 4px;
+        }
+
+        /* Gallery */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 16px;
+            margin-top: 16px;
+        }
+
+        .gallery-item {
+            overflow: hidden;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border: 1px solid #e0e0e0;
+        }
+
+        /* Timeline */
+        .timeline-toggle {
+            width: 100%;
+            padding: 12px 0;
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid #000000;
+            color: #000000;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 16px;
+            font-family: inherit;
+            text-align: left;
+        }
+
+        .timeline-toggle:hover {
+            opacity: 0.7;
+        }
+
+        .timeline-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+
+        .timeline-content.expanded {
+            max-height: 8000px;
+            transition: max-height 0.5s ease-in;
+        }
+
+        .timeline {
+            margin-top: 24px;
+        }
+
+        .timeline-item {
+            margin-bottom: 32px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .timeline-item:last-child {
+            border-bottom: none;
+        }
+
+        .timeline-date {
+            font-weight: 600;
+            font-size: 1rem;
+            margin-bottom: 8px;
+        }
+
+        .timeline-description {
+            margin-bottom: 12px;
+        }
+
+        .timeline-description ul {
+            margin-left: 20px;
+            margin-top: 8px;
+        }
+
+        .timeline-images {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 12px;
+            margin-top: 12px;
+        }
+
+        .timeline-images img {
+            width: 100%;
+            border: 1px solid #e0e0e0;
+        }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid #000000;
+            padding-top: 24px;
+            margin-top: 48px;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 8px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 40px 20px;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            h2 {
+                font-size: 1.25rem;
+                margin-top: 36px;
+            }
+
+            .overview-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+
+            .tech-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+                gap: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>BGlasses</h1>
+            <p class="tagline">AI-Powered Assistive Glasses for the Visually Impaired</p>
+            <div class="header-links">
+                <a href="https://youtu.be/1Tjno3-vf_k" target="_blank">Demo Video</a>
+                <span>|</span>
+                <a href="https://vnexpress.net/sinh-vien-lam-mat-kinh-ho-tro-doc-sach-cho-nguoi-mu-4554242.html" target="_blank">VnExpress Coverage</a>
+                <span>|</span>
+                <a href="https://vneconomy.vn/techfest-connect-2021-mo-duong-cho-startup-phat-trien.htm" target="_blank">VnEconomy Coverage</a>
+            </div>
+        </header>
+
+        <main>
+            <!-- Overview -->
+            <section id="overview">
+                <h2>Overview</h2>
+                <div class="overview-grid">
+                    <div>
+                        <h3>Problem</h3>
+                        <p>Visually impaired individuals face significant challenges in reading printed materials and navigating their environment independently, limiting their access to information and autonomy.</p>
+                    </div>
+                    <div>
+                        <h3>Solution</h3>
+                        <p>BGlasses combines computer vision, OCR, and text-to-speech AI models into wearable smart glasses that can read text aloud, recognize objects, and assist with daily navigation tasks in real-time.</p>
+                    </div>
+                    <div>
+                        <h3>Impact</h3>
+                        <p>Empowered visually impaired users with independent reading capabilities, gained national press coverage in Vietnam, and showcased at TechFest Connect 2021 as an innovative assistive technology solution.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- My Role -->
+            <section id="role">
+                <h2>My Role & Contributions</h2>
+                <ul class="role-list">
+                    <li>Led hardware development and system integration from initial prototype to production-ready device</li>
+                    <li>Designed custom PCB modules using Eagle CAD for power management and audio output</li>
+                    <li>Built and tested multiple iterations of embedded systems with Raspberry Pi Zero W and custom MCUs</li>
+                    <li>Integrated 4G connectivity module (Simcom/Quectel) for standalone operation without phone dependency</li>
+                    <li>Developed power optimization solutions to enable extended battery life in wearable form factor</li>
+                    <li>Created 3D models and prototypes that attach seamlessly to standard eyeglasses</li>
+                    <li>Tested and optimized AI models for text recognition, object detection, and scene understanding</li>
+                    <li>Co-founded BTEK team and managed hardware-software collaboration throughout development</li>
+                </ul>
+            </section>
+
+            <!-- Tech Stack -->
+            <section id="tech-stack">
+                <h2>Tech Stack & AI Components</h2>
+                <div class="tech-grid">
+                    <div class="tech-category">
+                        <h3>Hardware</h3>
+                        <div class="tech-tags">
+                            <span class="tag">Raspberry Pi Zero W</span>
+                            <span class="tag">Custom MCU</span>
+                            <span class="tag">Eagle CAD</span>
+                            <span class="tag">PCB Design</span>
+                            <span class="tag">Camera Module</span>
+                            <span class="tag">Audio/Sound Module</span>
+                            <span class="tag">Power Management</span>
+                            <span class="tag">Battery System</span>
+                        </div>
+                    </div>
+                    <div class="tech-category">
+                        <h3>Connectivity</h3>
+                        <div class="tech-tags">
+                            <span class="tag">4G Module (Simcom 7500E)</span>
+                            <span class="tag">Quectel Chip</span>
+                            <span class="tag">WiFi</span>
+                        </div>
+                    </div>
+                    <div class="tech-category">
+                        <h3>AI/ML Models</h3>
+                        <div class="tech-tags">
+                            <span class="tag">OCR (Text Recognition)</span>
+                            <span class="tag">Object Detection</span>
+                            <span class="tag">Scene Understanding</span>
+                            <span class="tag">Text-to-Speech</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Results -->
+            <section id="results">
+                <h2>Results & Recognition</h2>
+                <div class="results-list">
+                    <div class="result-item">
+                        <h3>National Press Coverage</h3>
+                        <p>Featured in <a href="https://vnexpress.net/sinh-vien-lam-mat-kinh-ho-tro-doc-sach-cho-nguoi-mu-4554242.html" target="_blank">VnExpress</a>, Vietnam's leading news platform, highlighting the innovation in assistive technology for visually impaired users.</p>
+                    </div>
+                    <div class="result-item">
+                        <h3>TechFest Connect 2021</h3>
+                        <p>Showcased at <a href="https://vneconomy.vn/techfest-connect-2021-mo-duong-cho-startup-phat-trien.htm" target="_blank">TechFest Connect 2021</a>, opening pathways for startup development and investor connections.</p>
+                    </div>
+                    <div class="result-item">
+                        <h3>Working Prototype</h3>
+                        <p><a href="https://youtu.be/1Tjno3-vf_k" target="_blank">Live demonstration video</a> showing real-time text reading and AI-powered assistance capabilities in action.</p>
+                    </div>
+                    <div class="result-item">
+                        <h3>Technical Achievement</h3>
+                        <p>Successfully developed custom hardware with integrated 4G connectivity, power management, and AI processing in a wearable form factor over multiple production-ready iterations spanning 2 years.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Gallery -->
+            <section id="gallery">
+                <h2>Project Gallery</h2>
+                <div class="gallery">
+                    <div class="gallery-item">
+                        <img src="assets/bglasses/bglassesJourney.png" alt="BGlasses Journey Overview">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="assets/bglasses/image 6.png" alt="Final Product">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="assets/bglasses/image 7.png" alt="Device Close-up">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="assets/bglasses/image 8.png" alt="Wearing Demo">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="assets/bglasses/image 9.png" alt="User Testing">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="assets/bglasses/image 10.png" alt="Reading Demonstration">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="assets/bglasses/image 11.png" alt="PCB Board">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="assets/bglasses/image 3.png" alt="SIM Module Prototype">
+                    </div>
+                </div>
+            </section>
+
+            <!-- Development Journey -->
+            <section id="journey">
+                <h2>Development Journey</h2>
+                <button class="timeline-toggle" onclick="toggleTimeline()">
+                    <span>View Complete Development Timeline (April 2020 - December 2022)</span>
+                    <span id="toggle-icon">▼</span>
+                </button>
+                <div class="timeline-content" id="timeline-content">
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-date">April 2020</div>
+                            <div class="timeline-description">
+                                <strong>Project Inception:</strong> The original idea conceived by Trinh Quoc Huy. First conceptual version developed.
+                            </div>
+                            <div class="timeline-images">
+                                <img src="assets/bglasses/image 23.png" alt="First version">
+                            </div>
+                        </div>
+
+                        <div class="timeline-item">
+                            <div class="timeline-date">June 2020</div>
+                            <div class="timeline-description">
+                                <strong>Hardware Development Begins:</strong> I joined the project and started building the hardware components and system architecture.
+                            </div>
+                            <div class="timeline-images">
+                                <img src="assets/bglasses/image 19.png" alt="Hardware build 1">
+                                <img src="assets/bglasses/image 20.png" alt="Hardware build 2">
+                                <img src="assets/bglasses/image 21.png" alt="Hardware build 3">
+                                <img src="assets/bglasses/image 22.png" alt="Hardware build 4">
+                            </div>
+                        </div>
+
+                        <div class="timeline-item">
+                            <div class="timeline-date">December 2020</div>
+                            <div class="timeline-description">
+                                <strong>PCB Design & AI Testing:</strong> Designed custom power board PCB using Eagle CAD with integrated sound module. Named team BTEK. PCB manufactured in China. Conducted comprehensive AI model testing for all features. Created new wearable version that attaches to standard glasses.
+                            </div>
+                            <div class="timeline-images">
+                                <img src="assets/bglasses/image 14.png" alt="PCB design">
+                                <img src="assets/bglasses/image 15.png" alt="3D model 1">
+                                <img src="assets/bglasses/image 16.png" alt="3D model 2">
+                                <img src="assets/bglasses/image 17.png" alt="3D model 3">
+                                <img src="assets/bglasses/image 18.png" alt="3D model 4">
+                            </div>
+                        </div>
+
+                        <div class="timeline-item">
+                            <div class="timeline-date">January 2021</div>
+                            <div class="timeline-description">
+                                <strong>PCB Delivery & Demo:</strong> Custom PCB boards delivered. First working demonstration video released.
+                            </div>
+                            <div class="timeline-images">
+                                <img src="assets/bglasses/image 11.png" alt="PCB 1">
+                                <img src="assets/bglasses/image 12.png" alt="PCB 2">
+                                <img src="assets/bglasses/image 13.png" alt="PCB 3">
+                            </div>
+                        </div>
+
+                        <div class="timeline-item">
+                            <div class="timeline-date">March 2021</div>
+                            <div class="timeline-description">
+                                <strong>New Version Release:</strong> Launched improved version with enhanced features and better integration.
+                            </div>
+                            <div class="timeline-images">
+                                <img src="assets/bglasses/image 6.png" alt="Release 1">
+                                <img src="assets/bglasses/image 7.png" alt="Release 2">
+                                <img src="assets/bglasses/image 8.png" alt="Release 3">
+                                <img src="assets/bglasses/image 9.png" alt="Release 4">
+                                <img src="assets/bglasses/image 10.png" alt="Release 5">
+                            </div>
+                        </div>
+
+                        <div class="timeline-item">
+                            <div class="timeline-date">April 2021</div>
+                            <div class="timeline-description">
+                                <strong>Next-Gen Planning:</strong> Planned major upgrade to address previous limitations:
+                                <ul>
+                                    <li>Previous: Pi Zero W MCU had power optimization challenges and required separate battery box</li>
+                                    <li>New: Custom high-speed MCU (outsourced), integrated 4G SIM module, advanced power management</li>
+                                </ul>
+                                First prototype developed with Simcom 7500E module.
+                            </div>
+                            <div class="timeline-images">
+                                <img src="assets/bglasses/image 3.png" alt="Simcom prototype 1">
+                                <img src="assets/bglasses/image 4.png" alt="Simcom prototype 2">
+                                <img src="assets/bglasses/image 5.png" alt="Simcom prototype 3">
+                            </div>
+                        </div>
+
+                        <div class="timeline-item">
+                            <div class="timeline-date">July 2021</div>
+                            <div class="timeline-description">
+                                <strong>Power Management Breakthrough:</strong> Developed new power management module prototype with improved efficiency and battery life.
+                            </div>
+                            <div class="timeline-images">
+                                <img src="assets/bglasses/image 1.png" alt="Power module 1">
+                                <img src="assets/bglasses/image 2.png" alt="Power module 2">
+                            </div>
+                        </div>
+
+                        <div class="timeline-item">
+                            <div class="timeline-date">December 2021</div>
+                            <div class="timeline-description">
+                                <strong>Chip Upgrade Testing:</strong> Tested Quectel chip as alternative to Simcom for improved performance and reliability.
+                            </div>
+                            <div class="timeline-images">
+                                <img src="assets/bglasses/image.png" alt="Quectel testing">
+                            </div>
+                        </div>
+
+                        <div class="timeline-item">
+                            <div class="timeline-date">December 2022</div>
+                            <div class="timeline-description">
+                                <strong>Temporary Pause:</strong> Project temporarily delayed due to challenges in hardware development and resource constraints.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>BGlasses Project — BTEK Team</p>
+            <a href="index.html" class="back-link">← Back to Portfolio</a>
+        </footer>
+    </div>
+
+    <script>
+        function toggleTimeline() {
+            const content = document.getElementById('timeline-content');
+            const icon = document.getElementById('toggle-icon');
+
+            if (content.classList.contains('expanded')) {
+                content.classList.remove('expanded');
+                icon.textContent = '▼';
+            } else {
+                content.classList.add('expanded');
+                icon.textContent = '▲';
+            }
+        }
+    </script>
+</body>
+</html>

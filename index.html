@@ -5,102 +5,296 @@
     <title>Pham Huy | Portfolio</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <style>
+      /* Base spacing unit: 48px for consistent vertical rhythm */
+      :root {
+        --spacing-unit: 48px;
+      }
+
       body {
         font-family: "Segoe UI", Arial, sans-serif;
         margin: 0;
         background: #f7f8fa;
         color: #1b1b1b;
       }
+
       .container {
         max-width: 640px;
         margin: 70px auto;
         background: #fff;
         border-radius: 8px;
-        box-shadow: 0 6px 30px rgba(0, 0, 0, 0.2);
+        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
         padding: 36px 32px;
-        /* border: 1px solid #000; */
       }
+
+      /* Profile Section */
       .profile-layout {
         display: flex;
         align-items: center;
         justify-content: space-between;
         gap: 36px;
       }
+
       .profile-info {
         flex: 2;
         text-align: left;
       }
+
       .profile-avatar {
         flex: 1;
         display: flex;
         justify-content: center;
       }
+
       .avatar {
-        width: 200px;
-        height: 280px;
+        width: 160px;
+        height: 220px;
         object-fit: cover;
-        border-radius: 4px;
+        border-radius: 8px;
         box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
-        /* border: 3.2px solid #1b1b1b; */
       }
+
+      /* Typography - Consistent scale */
+      h1 {
+        margin-top: 0;
+        margin-bottom: 16px;
+        font-size: 2.1rem;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+        line-height: 1.2;
+      }
+
+      h2 {
+        font-size: 1.5rem;
+        font-weight: 600;
+        margin-bottom: 20px;
+        color: #1b1b1b;
+        line-height: 1.3;
+      }
+
+      .desc {
+        color: #666;
+        font-size: 0.9375rem;
+        line-height: 1.6;
+        margin-bottom: 24px;
+      }
+
+      /* Contact Buttons */
       .contacts {
         display: flex;
-        gap: 4px;
+        flex-wrap: wrap;
+        gap: 8px;
         margin-top: 24px;
       }
+
       .contacts a {
-        display: flex;
+        display: inline-flex;
         align-items: center;
         text-decoration: none;
         color: #fff;
         font-weight: 500;
-        font-size: 0.8rem;
-        gap: 6px;
-        border-radius: 2px;
-        padding: 6px 14px;
-        transition: background 0.12s;
+        font-size: 0.8125rem;
+        white-space: nowrap;
+        border-radius: 4px;
+        padding: 8px 16px;
+        transition: background 0.2s;
         background-color: #1b1b1b;
       }
+
       .contacts a:hover {
         background: #555555;
       }
-      h1 {
-        margin-top: 0;
-        font-size: 2.1rem;
-        letter-spacing: 0.5px;
+
+      /* Section Spacing - Consistent */
+      .projects,
+      .tools {
+        margin-top: var(--spacing-unit);
       }
-      .desc {
+
+      /* Unified Card Styles - Projects & Tools */
+      .project-list {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        padding-left: 0;
+      }
+
+      .project-item,
+      .tool-item {
+        background: #f7f8fa;
+        border: 1px solid #e0e0e0;
+        border-radius: 8px;
+        padding: 16px;
+        transition: all 0.2s;
+      }
+
+      .project-item:hover,
+      .tool-item:hover {
+        border-color: #1b1b1b;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        transform: translateY(-2px);
+      }
+
+      .project-item a,
+      .tool-item a {
+        text-decoration: none;
+        color: inherit;
+        display: block;
+      }
+
+      /* Project Header */
+      .project-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        gap: 12px;
+        margin-bottom: 8px;
+        flex-wrap: wrap;
+      }
+
+      .project-year {
+        font-size: 0.875rem;
         color: #666;
-        margin-bottom: 24px;
+        font-weight: 500;
+        white-space: nowrap;
+      }
+
+      /* Unified Typography - Card Titles */
+      .project-title,
+      .tool-title {
+        font-size: 1.125rem;
+        font-weight: 600;
+        color: #1b1b1b;
+        line-height: 1.3;
+        flex: 1;
+        min-width: 200px;
+      }
+
+      /* Unified Typography - Card Descriptions */
+      .project-description,
+      .tool-description {
+        color: #666;
+        font-size: 0.875rem;
+        line-height: 1.5;
+      }
+
+      /* Project Footer - GitHub + Tags */
+      .project-footer {
+        margin-top: 12px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        align-items: center;
+      }
+
+      .github-btn {
+        display: inline-block;
+        padding: 4px 10px;
+        background: transparent;
+        color: #1b1b1b;
+        text-decoration: none;
+        border: 1px solid #1b1b1b;
+        border-radius: 4px;
+        font-size: 0.75rem;
+        font-weight: 500;
+        transition: all 0.2s;
+      }
+
+      .github-btn:hover {
+        background: #1b1b1b;
+        color: #fff;
+      }
+
+      /* Tags - Better grouping with min-width */
+      .project-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
+      .project-tag {
+        background: #1b1b1b;
+        color: #fff;
+        padding: 4px 10px;
+        border-radius: 4px;
+        font-size: 0.75rem;
+        font-weight: 500;
+        min-width: 60px;
+        text-align: center;
+      }
+
+      /* Tools Grid */
+      .tools-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 16px;
       }
 
       /* Responsive: mobile breakpoint */
       @media (max-width: 640px) {
         .container {
-          padding: 20px 8px;
-          margin-left: 10px;
-          margin-right: 10px;
+          padding: 24px 16px;
+          margin: 20px 16px;
         }
+
         .profile-layout {
           flex-direction: column-reverse;
-          gap: 18px;
+          gap: 24px;
         }
+
         .profile-info {
           text-align: center;
         }
+
         .avatar {
-          width: 100px;
-          height: 100px;
-          border-radius: 50%;
+          width: 120px;
+          height: 120px;
+          border-radius: 12px;
         }
+
         h1 {
+          font-size: 1.5rem;
+        }
+
+        h2 {
           font-size: 1.25rem;
         }
+
         .contacts {
-          flex-direction: row;
           justify-content: center;
-          align-items: center;
-          gap: 8px;
+        }
+
+        .project-header {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 4px;
+        }
+
+        .project-title,
+        .tool-title {
+          font-size: 1rem;
+        }
+
+        .project-year {
+          font-size: 0.8125rem;
+        }
+
+        .project-description,
+        .tool-description {
+          font-size: 0.8125rem;
+        }
+
+        .project-footer {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+
+        .github-btn {
+          margin-bottom: 4px;
+        }
+
+        .tools-grid {
+          grid-template-columns: 1fr;
         }
       }
     </style>
@@ -111,10 +305,10 @@
         <div class="profile-info">
           <h1>Pham Huy</h1>
           <div class="desc">
-            I am currently a Master’s candidate in Data Science at TU Dortmund,
+            I am currently a Master's candidate in Data Science at TU Dortmund,
             with a strong interest in developing innovative ideas in AI,
             robotics, intelligent machines, and web development.<br />
-            I also hold a Bachelor’s degree in Computer Science from FPT
+            I also hold a Bachelor's degree in Computer Science from FPT
             University.
           </div>
           <div class="contacts">
@@ -131,6 +325,130 @@
         </div>
         <div class="profile-avatar">
           <img src="/assets/avatar.jpg" alt="Avatar" class="avatar" />
+        </div>
+      </div>
+
+      <div class="projects">
+        <h2>Projects</h2>
+        <ul class="project-list">
+          <li class="project-item">
+            <a href="prosthetic-arm.html">
+              <div class="project-header">
+                <div class="project-title">Prosthetic Arm for Disabled People</div>
+                <div class="project-year">2016-2018</div>
+              </div>
+              <div class="project-description">
+                Low-cost robotic prosthetic arm controlled by foot movements,
+                capable of 31 distinct motions at only $150 production cost. Won
+                3rd place at INTEL ISEF 2017, 1st place at ViSEF 2017, and
+                published in IEEE proceedings.
+              </div>
+            </a>
+            <div class="project-footer">
+              <a href="https://github.com/hiro2kqt/prosthetic-arm" class="github-btn" target="_blank">GitHub</a>
+              <div class="project-tags">
+                <span class="project-tag">Robotics</span>
+                <span class="project-tag">Arduino</span>
+                <span class="project-tag">3D Printing</span>
+                <span class="project-tag">Embedded Systems</span>
+                <span class="project-tag">Hardware</span>
+              </div>
+            </div>
+          </li>
+          <li class="project-item">
+            <a href="bdoctor.html">
+              <div class="project-header">
+                <div class="project-title">BDoctor - AI Medical Diagnosis System</div>
+                <div class="project-year">2020</div>
+              </div>
+              <div class="project-description">
+                AI-powered medical diagnosis system using deep learning and image
+                segmentation for COVID-19 response. Won 3rd Prize in A.I Track at
+                HackCovy Competition and accepted into UNDP-backed Hackcelerator
+                Incubation program.
+              </div>
+            </a>
+            <div class="project-footer">
+              <a href="https://github.com/hiro2kqt/bdoctor" class="github-btn" target="_blank">GitHub</a>
+              <div class="project-tags">
+                <span class="project-tag">Deep Learning</span>
+                <span class="project-tag">Medical AI</span>
+                <span class="project-tag">Computer Vision</span>
+                <span class="project-tag">Image Segmentation</span>
+                <span class="project-tag">Healthcare</span>
+              </div>
+            </div>
+          </li>
+          <li class="project-item">
+            <a href="bglasses.html">
+              <div class="project-header">
+                <div class="project-title">BGlasses - AI Glasses for the Visually Impaired</div>
+                <div class="project-year">2020-2022</div>
+              </div>
+              <div class="project-description">
+                Wearable AI-powered assistive glasses that help visually impaired
+                users read text, recognize objects, and navigate their environment
+                using computer vision and text-to-speech. Featured in VnExpress
+                and showcased at TechFest Connect 2021.
+              </div>
+            </a>
+            <div class="project-footer">
+              <a href="https://github.com/hiro2kqt/bglasses" class="github-btn" target="_blank">GitHub</a>
+              <div class="project-tags">
+                <span class="project-tag">AI/ML</span>
+                <span class="project-tag">Computer Vision</span>
+                <span class="project-tag">Hardware</span>
+                <span class="project-tag">IoT</span>
+                <span class="project-tag">PCB Design</span>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="tools">
+        <h2>Utility Tools</h2>
+        <div class="tools-grid">
+          <div class="tool-item">
+            <a href="https://easycopy.hirolab.space/" target="_blank">
+              <div class="tool-title">EasyCopy</div>
+              <div class="tool-description">
+                A simple shared clipboard between devices - no login, no setup.
+              </div>
+            </a>
+          </div>
+          <div class="tool-item">
+            <a href="https://chromewebstore.google.com/detail/posture-reminder/kiimkemiinjofphddpecefjjcjmpnhpf" target="_blank">
+              <div class="tool-title">Posture Reminder</div>
+              <div class="tool-description">
+                Chrome extension to remind you to maintain good posture while working.
+              </div>
+            </a>
+          </div>
+          <div class="tool-item">
+            <a href="https://t.me/tud_dorm_reminder_bot" target="_blank">
+              <div class="tool-title">TU Dortmund Dorm Reminder</div>
+              <div class="tool-description">
+                Telegram bot for TU Dortmund dormitory registration reminders.
+              </div>
+            </a>
+          </div>
+          <div class="tool-item">
+            <a href="https://nocrop.hirolab.space/" target="_blank">
+              <div class="tool-title">NoCrop Image Tool</div>
+              <div class="tool-description">
+                Image layout tool that preserves aspect ratios without cropping.
+              </div>
+            </a>
+          </div>
+          <div class="tool-item">
+            <a href="https://t.me/nocropimagebot" target="_blank">
+              <div class="tool-title">NoCrop Bot</div>
+              <div class="tool-description">
+                Telegram bot version of NoCrop for easy image processing on mobile.
+              </div>
+            </a>
+          </div>
         </div>
       </div>
     </div>
