@@ -230,6 +230,32 @@
         gap: 16px;
       }
 
+      /* Featured Tool */
+      .tool-item.featured {
+        border: 2px solid #1b1b1b;
+        background: #fff;
+      }
+
+      .tool-item.featured .tool-title {
+        font-size: 1.25rem;
+        color: #1b1b1b;
+      }
+
+      .tool-item.featured .tool-description {
+        color: #1b1b1b;
+        font-size: 0.9375rem;
+      }
+
+      /* Secondary Tools - Less Prominent */
+      .tool-item.secondary {
+        opacity: 0.7;
+        background: #fafafa;
+      }
+
+      .tool-item.secondary:hover {
+        opacity: 1;
+      }
+
       /* Responsive: mobile breakpoint */
       @media (max-width: 640px) {
         .container {
@@ -332,26 +358,65 @@
         <h2>Projects</h2>
         <ul class="project-list">
           <li class="project-item">
-            <a href="prosthetic-arm.html">
+            <div class="project-header">
+              <div class="project-title">Event Horizon AI - Data Research Workflow Tool</div>
+              <div class="project-year">2024-2025</div>
+            </div>
+            <div class="project-description">
+              Intelligent platform for investors featuring visual node-based drag-and-drop pipeline builder for automated multi-stage data workflows. Combines multi-expert AI agent system with three-layer intelligent analysis to extract and explain meaningful financial features, empowering users to make informed investment decisions.
+            </div>
+            <div class="project-footer">
+              <a href="https://home-evth.hirolab.space/" class="github-btn" target="_blank">Landing Page</a>
+              <a href="https://evth.hirolab.space/" class="github-btn" target="_blank">MVP App</a>
+              <div class="project-tags">
+                <span class="project-tag">Python</span>
+                <span class="project-tag">AI Agents</span>
+                <span class="project-tag">Data Engineering</span>
+                <span class="project-tag">FinTech</span>
+                <span class="project-tag">Web Development</span>
+              </div>
+            </div>
+          </li>
+          <li class="project-item">
+            <div class="project-header">
+              <div class="project-title">VisionaryAI - Distributed AI Inference Marketplace</div>
+              <div class="project-year">2024</div>
+            </div>
+            <div class="project-description">
+              Distributed AI inference marketplace enabling users to upload and deploy custom LLM models with on-demand GPU-backed inference. Features interactive chat interface for real-time model testing, multi-version model management, and SUI blockchain integration for decentralized model ownership and token-based compute access. Developed for SUI Hackathon.
+            </div>
+            <div class="project-footer">
+              <a href="https://github.com/SUI-VisionaryAI/VisionaryAI-FE" class="github-btn" target="_blank">GitHub</a>
+              <div class="project-tags">
+                <span class="project-tag">LLM</span>
+                <span class="project-tag">AI/ML</span>
+                <span class="project-tag">Blockchain</span>
+                <span class="project-tag">Distributed Systems</span>
+                <span class="project-tag">React</span>
+              </div>
+            </div>
+          </li>
+          <li class="project-item">
+            <a href="bglasses.html">
               <div class="project-header">
-                <div class="project-title">Prosthetic Arm for Disabled People</div>
-                <div class="project-year">2016-2018</div>
+                <div class="project-title">BGlasses - AI Glasses for the Visually Impaired</div>
+                <div class="project-year">2020-2022</div>
               </div>
               <div class="project-description">
-                Low-cost robotic prosthetic arm controlled by foot movements,
-                capable of 31 distinct motions at only $150 production cost. Won
-                3rd place at INTEL ISEF 2017, 1st place at ViSEF 2017, and
-                published in IEEE proceedings.
+                Wearable AI-powered assistive glasses that help visually impaired
+                users read text, recognize objects, and navigate their environment
+                using computer vision and text-to-speech. Featured in VnExpress
+                and showcased at TechFest Connect 2021.
               </div>
             </a>
             <div class="project-footer">
-              <a href="https://github.com/hiro2kqt/prosthetic-arm" class="github-btn" target="_blank">GitHub</a>
+              <a href="https://github.com/hiro2kqt/bglasses" class="github-btn" target="_blank">GitHub</a>
               <div class="project-tags">
-                <span class="project-tag">Robotics</span>
-                <span class="project-tag">Arduino</span>
-                <span class="project-tag">3D Printing</span>
-                <span class="project-tag">Embedded Systems</span>
+                <span class="project-tag">AI/ML</span>
+                <span class="project-tag">Computer Vision</span>
                 <span class="project-tag">Hardware</span>
+                <span class="project-tag">IoT</span>
+                <span class="project-tag">PCB Design</span>
               </div>
             </div>
           </li>
@@ -380,26 +445,26 @@
             </div>
           </li>
           <li class="project-item">
-            <a href="bglasses.html">
+            <a href="prosthetic-arm.html">
               <div class="project-header">
-                <div class="project-title">BGlasses - AI Glasses for the Visually Impaired</div>
-                <div class="project-year">2020-2022</div>
+                <div class="project-title">Prosthetic Arm for Disabled People</div>
+                <div class="project-year">2016-2018</div>
               </div>
               <div class="project-description">
-                Wearable AI-powered assistive glasses that help visually impaired
-                users read text, recognize objects, and navigate their environment
-                using computer vision and text-to-speech. Featured in VnExpress
-                and showcased at TechFest Connect 2021.
+                Low-cost robotic prosthetic arm controlled by foot movements,
+                capable of 31 distinct motions at only $150 production cost. Won
+                3rd place at INTEL ISEF 2017, 1st place at ViSEF 2017, and
+                published in IEEE proceedings.
               </div>
             </a>
             <div class="project-footer">
-              <a href="https://github.com/hiro2kqt/bglasses" class="github-btn" target="_blank">GitHub</a>
+              <a href="https://github.com/hiro2kqt/prosthetic-arm" class="github-btn" target="_blank">GitHub</a>
               <div class="project-tags">
-                <span class="project-tag">AI/ML</span>
-                <span class="project-tag">Computer Vision</span>
+                <span class="project-tag">Robotics</span>
+                <span class="project-tag">Arduino</span>
+                <span class="project-tag">3D Printing</span>
+                <span class="project-tag">Embedded Systems</span>
                 <span class="project-tag">Hardware</span>
-                <span class="project-tag">IoT</span>
-                <span class="project-tag">PCB Design</span>
               </div>
             </div>
           </li>
@@ -407,9 +472,17 @@
       </div>
 
       <div class="tools">
-        <h2>Utility Tools</h2>
+        <h2>Opensource</h2>
         <div class="tools-grid">
-          <div class="tool-item">
+          <div class="tool-item featured">
+            <a href="https://github.com/hiro2kqt/Google-search-image-crawl" target="_blank">
+              <div class="tool-title">Google Image Crawler</div>
+              <div class="tool-description">
+                Download images from Google search with keywords using Puppeteer automation.
+              </div>
+            </a>
+          </div>
+          <div class="tool-item secondary">
             <a href="https://easycopy.hirolab.space/" target="_blank">
               <div class="tool-title">EasyCopy</div>
               <div class="tool-description">
@@ -417,7 +490,7 @@
               </div>
             </a>
           </div>
-          <div class="tool-item">
+          <div class="tool-item secondary">
             <a href="https://chromewebstore.google.com/detail/posture-reminder/kiimkemiinjofphddpecefjjcjmpnhpf" target="_blank">
               <div class="tool-title">Posture Reminder</div>
               <div class="tool-description">
@@ -425,7 +498,7 @@
               </div>
             </a>
           </div>
-          <div class="tool-item">
+          <div class="tool-item secondary">
             <a href="https://t.me/tud_dorm_reminder_bot" target="_blank">
               <div class="tool-title">TU Dortmund Dorm Reminder</div>
               <div class="tool-description">
@@ -433,7 +506,7 @@
               </div>
             </a>
           </div>
-          <div class="tool-item">
+          <div class="tool-item secondary">
             <a href="https://nocrop.hirolab.space/" target="_blank">
               <div class="tool-title">NoCrop Image Tool</div>
               <div class="tool-description">
@@ -441,7 +514,7 @@
               </div>
             </a>
           </div>
-          <div class="tool-item">
+          <div class="tool-item secondary">
             <a href="https://t.me/nocropimagebot" target="_blank">
               <div class="tool-title">NoCrop Bot</div>
               <div class="tool-description">
